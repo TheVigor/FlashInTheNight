@@ -41,7 +41,7 @@ class KitKatFlashlight : AbstractFlashlight() {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
-                    mCamera = Camera.open(it)
+                    mCamera = it?.let { it1 -> Camera.open(it1) }
                     mCamera?.let {
                         with(it) {
                             startPreview()
