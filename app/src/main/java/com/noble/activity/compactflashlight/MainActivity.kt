@@ -1,4 +1,4 @@
-package com.vigor.the.flashinthenight
+package com.noble.activity.compactflashlight
 
 import android.Manifest
 import android.content.DialogInterface
@@ -13,8 +13,6 @@ import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.CheckBox
 import android.widget.ImageView
-import com.vigor.the.flashinthenight.flashlight.Flashlight
-import com.vigor.the.flashinthenight.flashlight.FlashlightFactory
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable

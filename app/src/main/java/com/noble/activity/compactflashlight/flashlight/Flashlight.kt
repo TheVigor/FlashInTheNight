@@ -1,4 +1,4 @@
-package com.vigor.the.flashinthenight.flashlight
+package com.noble.activity.compactflashlight
 
 import io.reactivex.Observable
 

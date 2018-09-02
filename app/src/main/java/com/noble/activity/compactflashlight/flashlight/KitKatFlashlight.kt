@@ -1,4 +1,4 @@
-package com.vigor.the.flashinthenight.flashlight
+package com.noble.activity.compactflashlight
 
 import android.hardware.Camera
 import io.reactivex.Observable

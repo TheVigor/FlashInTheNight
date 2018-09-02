@@ -1,4 +1,4 @@
-package com.vigor.the.flashinthenight.extensions
+package com.noble.activity.compactflashlight
 
 import android.os.Build
 

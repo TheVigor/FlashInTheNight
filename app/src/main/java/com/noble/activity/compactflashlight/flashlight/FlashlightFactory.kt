@@ -1,10 +1,8 @@
-package com.vigor.the.flashinthenight.flashlight
+package com.noble.activity.compactflashlight
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
-import com.vigor.the.flashinthenight.extensions.isLollipop
-import com.vigor.the.flashinthenight.extensions.isMarshmallowAndUpper
 
 object FlashlightFactory {
 

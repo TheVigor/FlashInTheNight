@@ -1,4 +1,4 @@
-package com.vigor.the.flashinthenight.flashlight
+package com.noble.activity.compactflashlight
 
 import android.annotation.TargetApi
 import android.content.Context
