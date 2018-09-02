@@ -7,6 +7,7 @@ import android.graphics.Color
 import android.graphics.PorterDuff
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.SyncStateContract
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
 import android.view.View
@@ -52,7 +53,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         mImageViewOnOff = findViewById(R.id.imageViewOnOff) as ImageView
-        changeIconColor(Color.RED, mImageViewOnOff)
+        changeIconColor(Color.parseColor(COLOR_OFF), mImageViewOnOff)
 
 
         mImageViewOnOff.setOnClickListener { onFlashlightOnOffClicked() }
@@ -178,9 +179,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun toggleFlashlight(enabled: Boolean = !isFlashlightEnabled) {
         if (isFlashlightEnabled)
-            changeIconColor(Color.RED, mImageViewOnOff)
+            changeIconColor(Color.parseColor(COLOR_OFF), mImageViewOnOff)
         else
-            changeIconColor(Color.GREEN, mImageViewOnOff)
+            changeIconColor(Color.parseColor(COLOR_ON), mImageViewOnOff)
 
         isFlashlightEnabled = enabled
         mFlashlight.enable(isFlashlightEnabled)
