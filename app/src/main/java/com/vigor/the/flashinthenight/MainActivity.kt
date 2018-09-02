@@ -3,12 +3,15 @@ package com.vigor.the.flashinthenight
 import android.Manifest
 import android.content.DialogInterface
 import android.content.pm.PackageManager
+import android.graphics.Color
+import android.graphics.PorterDuff
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.ActivityCompat
 import android.support.v7.app.AlertDialog
 import android.view.View
 import android.widget.CheckBox
+import android.widget.ImageView
 import com.vigor.the.flashinthenight.flashlight.Flashlight
 import com.vigor.the.flashinthenight.flashlight.FlashlightFactory
 import io.reactivex.Observable
@@ -22,8 +25,7 @@ import java.util.concurrent.TimeUnit
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var mButtonOnOff: View
-    private lateinit var mCheckBoxStrob: CheckBox
+    private lateinit var mImageViewOnOff : ImageView
 
     private lateinit var mFlashlight: Flashlight
 
@@ -49,12 +51,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        mButtonOnOff = findViewById(R.id.btn_on_off)
-        mCheckBoxStrob = findViewById(R.id.cb_strob) as CheckBox
+        mImageViewOnOff = findViewById(R.id.imageViewOnOff) as ImageView
+        changeIconColor(Color.RED, mImageViewOnOff)
 
-        mButtonOnOff.setOnClickListener { onFlashlightOnOffClicked() }
-        mButtonOnOff.isEnabled = isFlashlightSupported
-        mCheckBoxStrob.setOnCheckedChangeListener { _, isChecked -> onStroboscopeEnableChanged(isChecked) }
+
+        mImageViewOnOff.setOnClickListener { onFlashlightOnOffClicked() }
+        mImageViewOnOff.isEnabled = isFlashlightSupported
 
         mFlashlight = FlashlightFactory.newInstance(this)
         mFlashlight.isSupported()
@@ -108,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                 .zip(mFlashlight.onInitialized, onPermissionsGranted, BiFunction<Unit, Unit, Unit> { _, _ -> })
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
-                    mButtonOnOff.isEnabled = isFlashlightSupported
+                    mImageViewOnOff.isEnabled = isFlashlightSupported
                 })
         onStart.onNext(Unit)
         checkCameraPermissions()
@@ -165,7 +167,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun onStroboscopeEnableChanged(enabled: Boolean) {
         isStroboscopeEnabled = enabled
-        mButtonOnOff.isEnabled = isFlashlightSupported && !enabled
+        mImageViewOnOff.isEnabled = isFlashlightSupported && !enabled
         if (isStroboscopeEnabled) {
             startStroboscopeTask()
         } else {
@@ -175,12 +177,22 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun toggleFlashlight(enabled: Boolean = !isFlashlightEnabled) {
+        if (isFlashlightEnabled)
+            changeIconColor(Color.RED, mImageViewOnOff)
+        else
+            changeIconColor(Color.GREEN, mImageViewOnOff)
+
         isFlashlightEnabled = enabled
         mFlashlight.enable(isFlashlightEnabled)
     }
 
     private fun onFlashlightNotSupported() {
         isFlashlightSupported = false
-        mButtonOnOff.isEnabled = false
+        mImageViewOnOff.isEnabled = false
     }
+
+    private fun changeIconColor(color: Int, imageView: ImageView?) {
+        imageView!!.background.mutate().setColorFilter(color, PorterDuff.Mode.SRC_IN)
+    }
+
 }
