@@ -82,10 +82,10 @@ class MainActivity : AppCompatActivity() {
             }
             if (permissionDialog == null) {
                 permissionDialog = AlertDialog.Builder(this)
-                        .setTitle("Camera Permissions")
-                        .setMessage("Please grant the permission to your camera so that application can access flashlight of your device.")
-                        .setPositiveButton("Continue", listener)
-                        .setNegativeButton("Cancel", listener)
+                        .setTitle(R.string.camera_permissions)
+                        .setMessage(R.string.camera_permissions_request)
+                        .setPositiveButton(R.string.camera_continue, listener)
+                        .setNegativeButton(R.string.camera_cancel, listener)
                         .setOnDismissListener { permissionDialog = null }
                         .show()
             }

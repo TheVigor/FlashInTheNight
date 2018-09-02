@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Компактный фонарик</string>
+
+    <string name="camera_permissions">Разрешения Камеры</string>
+    <string name="camera_permissions_request">"Пожалуйста, предоставьте разрешения камеры, чтобы приложение могло получить доступ к фонарику на вашем устройстве."</string>
+
+    <string name="camera_continue">Продолжить</string>
+    <string name="camera_cancel">Отмена</string>
+</resources>

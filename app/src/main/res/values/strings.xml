@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">FlashInTheNight</string>
+    <string name="app_name">Compact Flashlight</string>
+
+    <string name="camera_permissions">Camera Permissions</string>
+    <string name="camera_permissions_request">"Please grant the permission to your camera so that application can access flashlight of your device."</string>
+
+    <string name="camera_continue">Continue</string>
+    <string name="camera_cancel">Cancel</string>
+
+
 </resources>
